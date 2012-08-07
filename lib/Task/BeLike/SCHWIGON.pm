@@ -2,11 +2,13 @@ use strict;
 use warnings;
 
 package Task::BeLike::SCHWIGON;
+# git description: v0.001-1-g256a5cd
+
 BEGIN {
   $Task::BeLike::SCHWIGON::AUTHORITY = 'cpan:SCHWIGON';
 }
 {
-  $Task::BeLike::SCHWIGON::VERSION = '0.001';
+  $Task::BeLike::SCHWIGON::VERSION = '0.002';
 }
 # ABSTRACT: Modules SCHWIGON uses
 
@@ -22,7 +24,7 @@ Task::BeLike::SCHWIGON - Modules SCHWIGON uses
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 TASK CONTENTS
 
@@ -62,6 +64,8 @@ version 0.001
 
 =head2 Development Tools
 
+=head3 L<bareword::filehandles>
+
 =head3 L<Acme::MetaSyntactic>
 
 =head3 L<Carp::Always>
@@ -80,9 +84,11 @@ version 0.001
 
 =head3 L<Dist::Zilla::PluginBundle::SCHWIGON>
 
-=head3 L<Dist::Zilla::App::Command::weaverconf>
+=head3 L<Pod::Weaver::PluginBundle::SCHWIGON>
 
 =head3 L<Gitalist>
+
+=head3 L<indirect>
 
 =head3 L<Module::CPANTS::Analyse>
 
@@ -95,6 +101,8 @@ version 0.001
 =head3 L<Module::Install::CheckConflicts>
 
 =head3 L<Module::Install::ExtraTests>
+
+=head3 L<multidimensional>
 
 =head3 L<Perl::Tidy>
 
