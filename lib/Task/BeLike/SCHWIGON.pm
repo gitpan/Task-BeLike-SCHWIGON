@@ -2,13 +2,13 @@ use strict;
 use warnings;
 
 package Task::BeLike::SCHWIGON;
-# git description: v0.001-1-g256a5cd
+# git description: v0.002-3-g02a8d9b
 
 BEGIN {
   $Task::BeLike::SCHWIGON::AUTHORITY = 'cpan:SCHWIGON';
 }
 {
-  $Task::BeLike::SCHWIGON::VERSION = '0.002';
+  $Task::BeLike::SCHWIGON::VERSION = '0.003';
 }
 # ABSTRACT: Modules SCHWIGON uses
 
@@ -16,6 +16,7 @@ BEGIN {
 1;
 
 __END__
+
 =pod
 
 =head1 NAME
@@ -24,15 +25,13 @@ Task::BeLike::SCHWIGON - Modules SCHWIGON uses
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 TASK CONTENTS
 
 =head2 Applications
 
 =head3 L<App::Ack>
-
-=head3 L<App::Metabase::Relayd>
 
 =head3 L<App::Nopaste>
 
@@ -64,15 +63,9 @@ version 0.002
 
 =head2 Development Tools
 
+=head3 L<Archive::Tar::Wrapper>
+
 =head3 L<bareword::filehandles>
-
-=head3 L<Acme::MetaSyntactic>
-
-=head3 L<Carp::Always>
-
-=head3 L<Carp::Always::Color>
-
-=head3 L<Carp::REPL>
 
 =head3 L<Devel::bt>
 
@@ -86,11 +79,11 @@ version 0.002
 
 =head3 L<Pod::Weaver::PluginBundle::SCHWIGON>
 
-=head3 L<Gitalist>
+=head3 L<Dist::Zilla::PluginBundle::TAPPER>
+
+=head3 L<Pod::Weaver::PluginBundle::TAPPER>
 
 =head3 L<indirect>
-
-=head3 L<Module::CPANTS::Analyse>
 
 =head3 L<Module::Install> 0.95
 
@@ -116,15 +109,15 @@ version 0.002
 
 =head3 L<Test::Pod::Coverage>
 
-=head3 L<Test::Without::Module>
-
 =head3 L<V>
 
 =head2 Modules I use a lot
 
-=head3 L<aliased>
-
 =head3 L<App::Cmd>
+
+=head3 L<App::Rad>
+
+=head3 L<Task::PerlFormance>
 
 =head3 L<Bundle::CPANxxl>
 
@@ -136,9 +129,9 @@ version 0.002
 
 =head3 L<Cache::FileCache>
 
-=head3 L<Catalyst::Model::KiokuDB>
-
 =head3 L<Data::DPath>
+
+=head3 L<App::DPath>
 
 =head3 L<Data::Visitor>
 
@@ -159,6 +152,8 @@ version 0.002
 =head3 L<DBD::mysql>
 
 =head3 L<DBD::SQLite>
+
+=head3 L<DBD::Pg>
 
 =head3 L<DBI>
 
@@ -182,8 +177,6 @@ version 0.002
 
 =head3 L<File::Type>
 
-=head3 L<Function::Parameters>
-
 =head3 L<Hash::Merge>
 
 =head3 L<Hash::Merge::Simple>
@@ -199,20 +192,6 @@ version 0.002
 =head3 L<List::MoreUtils>
 
 =head3 L<Log::Log4perl>
-
-=head3 L<Method::Signatures>
-
-=head3 L<Method::Signatures::Simple>
-
-=head3 L<MIME::Lite>
-
-=head3 L<MIME::Tools>
-
-=head3 L<MIME::Types>
-
-=head3 L<Module::Install>
-
-=head3 L<Module::Starter>
 
 =head3 L<Moose>
 
@@ -256,13 +235,7 @@ version 0.002
 
 =head3 L<Regexp::Common>
 
-=head3 L<RPC::XML>
-
-=head3 L<RPC::XML::Server>
-
 =head3 L<SQL::Translator>
-
-=head3 L<String::Diff>
 
 =head3 L<Sub::Exporter>
 
@@ -271,12 +244,6 @@ version 0.002
 =head3 L<TAP::Formatter::HTML>
 
 =head3 L<TAP::Parser::Aggregator>
-
-=head3 L<Task::Catalyst>
-
-=head3 L<Task::KiokuDB>
-
-=head3 L<Task::Plack>
 
 =head3 L<Template>
 
@@ -296,10 +263,6 @@ version 0.002
 
 =head3 L<URI::Escape>
 
-=head3 L<XML::Generator>
-
-=head3 L<XML::Simple>
-
 =head3 L<YAML>
 
 =head3 L<YAML::Syck>
@@ -312,10 +275,9 @@ Steffen Schwigon <ss5@renormalist.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steffen Schwigon.
+This software is copyright (c) 2013 by Steffen Schwigon.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

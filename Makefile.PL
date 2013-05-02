@@ -11,9 +11,7 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Modules SCHWIGON uses",
   "AUTHOR" => "Steffen Schwigon <ss5\@renormalist.net>",
-  "BUILD_REQUIRES" => {
-    "Test::More" => 0
-  },
+  "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -22,14 +20,15 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Task::BeLike::SCHWIGON",
   "PREREQ_PM" => {
-    "Acme::MetaSyntactic" => 0,
     "App::Ack" => 0,
     "App::Cmd" => 0,
-    "App::Metabase::Relayd" => 0,
+    "App::DPath" => 0,
     "App::Nopaste" => 0,
+    "App::Rad" => 0,
     "App::Software::License" => 0,
     "App::cpanminus" => 0,
     "App::cpanoutdated" => 0,
+    "Archive::Tar::Wrapper" => 0,
     "Bundle::CPANxxl" => 0,
     "Bundle::LWP" => 0,
     "Bundle::libnet" => 0,
@@ -39,10 +38,7 @@ my %WriteMakefileArgs = (
     "CPAN::Uploader" => 0,
     "Cache::Cache" => 0,
     "Cache::FileCache" => 0,
-    "Carp::Always" => 0,
-    "Carp::Always::Color" => 0,
-    "Carp::REPL" => 0,
-    "Catalyst::Model::KiokuDB" => 0,
+    "DBD::Pg" => 0,
     "DBD::SQLite" => 0,
     "DBD::mysql" => 0,
     "DBI" => 0,
@@ -67,11 +63,10 @@ my %WriteMakefileArgs = (
     "Directory::Scratch" => 0,
     "Dist::Zilla" => 0,
     "Dist::Zilla::PluginBundle::SCHWIGON" => 0,
+    "Dist::Zilla::PluginBundle::TAPPER" => 0,
     "File::ShareDir" => 0,
     "File::Slurp" => 0,
     "File::Type" => 0,
-    "Function::Parameters" => 0,
-    "Gitalist" => 0,
     "Hash::Merge" => 0,
     "Hash::Merge::Simple" => 0,
     "JSON" => 0,
@@ -80,18 +75,11 @@ my %WriteMakefileArgs = (
     "List::AllUtils" => 0,
     "List::MoreUtils" => 0,
     "Log::Log4perl" => 0,
-    "MIME::Lite" => 0,
-    "MIME::Tools" => 0,
-    "MIME::Types" => 0,
-    "Method::Signatures" => 0,
-    "Method::Signatures::Simple" => 0,
-    "Module::CPANTS::Analyse" => 0,
-    "Module::Install" => 0,
+    "Module::Install" => "0.95",
     "Module::Install::AuthorRequires" => 0,
     "Module::Install::AuthorTests" => 0,
     "Module::Install::CheckConflicts" => 0,
     "Module::Install::ExtraTests" => 0,
-    "Module::Starter" => 0,
     "Moose" => 0,
     "Moose::Autobox" => 0,
     "MooseX::Daemonize" => 0,
@@ -117,18 +105,14 @@ my %WriteMakefileArgs = (
     "Perl::Version" => "1.010",
     "Pod::Coverage::TrustPod" => 0,
     "Pod::Weaver::PluginBundle::SCHWIGON" => 0,
-    "RPC::XML" => 0,
-    "RPC::XML::Server" => 0,
+    "Pod::Weaver::PluginBundle::TAPPER" => 0,
     "Regexp::Common" => 0,
     "SQL::Translator" => 0,
-    "String::Diff" => 0,
     "Sub::Exporter" => 0,
     "TAP::DOM" => 0,
     "TAP::Formatter::HTML" => 0,
     "TAP::Parser::Aggregator" => 0,
-    "Task::Catalyst" => 0,
-    "Task::KiokuDB" => 0,
-    "Task::Plack" => 0,
+    "Task::PerlFormance" => 0,
     "Task::SDK::Moose" => 0,
     "Template" => 0,
     "Term::ReadLine::Gnu" => 0,
@@ -142,29 +126,41 @@ my %WriteMakefileArgs = (
     "Test::Reporter" => 0,
     "Test::Reporter::Transport::Socket" => 0,
     "Test::WWW::Mechanize::Catalyst" => 0,
-    "Test::Without::Module" => 0,
     "TryCatch" => 0,
     "URI" => 0,
     "URI::Escape" => 0,
     "V" => 0,
-    "XML::Generator" => 0,
-    "XML::Simple" => 0,
     "YAML" => 0,
     "YAML::Syck" => 0,
     "YAML::XS" => 0,
-    "aliased" => 0,
     "bareword::filehandles" => 0,
     "indirect" => 0,
     "multidimensional" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.002",
+  "TEST_REQUIRES" => {
+    "Test::More" => 0
+  },
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
